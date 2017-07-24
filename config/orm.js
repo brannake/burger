@@ -1,5 +1,5 @@
 var mysql = require("mysql");
-require("./connection.js");
+var connection = require("./connection.js");
 
 // Helper function for SQL syntax.
 function printQuestionMarks(num) {
@@ -22,17 +22,17 @@ function objToSql(ob) {
 
 var orm = {
     
-all: function selectAll(tableInput, cb) {
+all: function (tableInput, cb) {
     connection.query("SELECT * FROM "+tableInput+";", function (error, results, fields) {
         if (error) {
             throw error;
         }
         console.log('The solution is: ', results);
-        cb(result);
+        cb(results);
     });
 },
 
-insert: function insertOne(table, cols, vals, cb) {
+insert: function (table, cols, vals, cb) {
     var queryString = "INSERT INTO " + table;
 
     queryString += " (";
@@ -48,7 +48,7 @@ insert: function insertOne(table, cols, vals, cb) {
       if (err) {
         throw err;
       }
-      cb(result);
+      cb(results);
     });
   },
 
@@ -63,7 +63,9 @@ insert: function insertOne(table, cols, vals, cb) {
       if (err) {
         throw err;
       }
-      cb(result);
+      cb(results);
     })
   }
 }
+
+module.exports = orm;
