@@ -15,11 +15,11 @@ router.get("/", function(req, res) {
 });
 
 router.post("/", function(req, res) {
-    console.log(req.body);
+    var add = req.body.burger_name;
   burger.insert([
     "burger_name", "devoured"
   ], [
-    "Whataburger", true
+    add, false
   ], function() {
     res.redirect("/");
   });
