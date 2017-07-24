@@ -14,4 +14,15 @@ router.get("/", function(req, res) {
   });
 });
 
+router.post("/", function(req, res) {
+    console.log(req.body);
+  burger.insert([
+    "burger_name", "devoured"
+  ], [
+    "Whataburger", true
+  ], function() {
+    res.redirect("/");
+  });
+});
+
 module.exports = router;

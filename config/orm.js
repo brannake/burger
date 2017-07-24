@@ -44,7 +44,7 @@ insert: function (table, cols, vals, cb) {
 
     console.log(queryString);
 
-    connection.query(queryString, vals, function(err, result) {
+    connection.query(queryString, vals, function(err, results) {
       if (err) {
         throw err;
       }
@@ -59,7 +59,7 @@ insert: function (table, cols, vals, cb) {
     queryString += " WHERE ";
     queryString += condition;
     console.log(queryString);
-    connection.query(queryString, function(err, result) {
+    connection.query(queryString, function(err, results) {
       if (err) {
         throw err;
       }
