@@ -1,7 +1,7 @@
-module.exports = {
-    var mysql = require("mysql");
 
-    var connection = mysql.createConnection({
+var mysql = require("mysql");
+
+var connection = mysql.createConnection({
         host: "localhost",
         port: 3306,
         // Your username
@@ -9,6 +9,14 @@ module.exports = {
         // Your password
         password: "meatbal1l",
         database: "burgers_db"
-})
+    })
 
-}
+connection.connect(function(err) {
+  if (err) {
+    console.error("error connecting: " + err.stack);
+    return;
+  }
+  console.log("connected as id " + connection.threadId);
+    })
+
+module.exports = connection;
