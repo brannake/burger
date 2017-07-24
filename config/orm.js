@@ -52,12 +52,13 @@ insert: function (table, cols, vals, cb) {
     });
   },
 
-  update: function(table, objColVals, condition, cb) {
+  update: function(table, vals, condition, cb) {
     var queryString = "UPDATE " + table;
     queryString += " SET ";
-    queryString += objToSql(objColVals);
+    queryString += "devoured = "+vals;
     queryString += " WHERE ";
     queryString += condition;
+    queryString += ";";
     console.log(queryString);
     connection.query(queryString, function(err, results) {
       if (err) {

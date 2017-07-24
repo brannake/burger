@@ -2,9 +2,14 @@
 <ul class="burger_list">
   {{#each burger}}
     <li>{{this.burger_name}}</li>
+    <div>Devoured {{this.devoured}}</div>
+    <form action="/update/{{this.id}}" method="POST">
+    <input type="hidden" name="{{this.burger_name}}" id="{{this.id}}">
+    <button type="submit">Devour this burger!</button>
+</form>
   {{/each}}
 </ul>
-<form action="/" method="POST">
+<form action="/insert" method="POST">
     <input type="text" name="burger_name">
     <button type="submit">Add another burger!</button>
 </form>
