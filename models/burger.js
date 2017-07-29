@@ -21,6 +21,16 @@ var burger = {
     orm.update("burgers", vals, condition, function(res) {
       cb(res);
     });
+  },
+   update2: function(vals, condition, cb) {
+    orm.update2("burgers", vals, condition, function(res) {
+      cb(res);
+    });
+  },
+  delete: function(condition, cb) {
+    orm.delete("burgers", condition, function(res) {
+      cb(res);
+    });
   }
 };
 

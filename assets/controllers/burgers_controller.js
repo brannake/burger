@@ -34,4 +34,24 @@ router.post("/update/:id", function(req, res) {
   });
 });
 
+router.post("/update2/:id", function(req, res) {
+    console.log(req.params.id);
+    console.log(req.body.thing);
+    var condition = "id = " + req.params.id;
+    var name = req.body.thing;
+  burger.update2(name,
+    condition, function() {
+    res.redirect("/");
+  });
+});
+
+router.post("/delete/:id", function(req, res) {
+    console.log(req.params.id);
+    var condition = req.params.id;
+  burger.delete(
+    condition, function() {
+    res.redirect("/");
+  });
+});
+
 module.exports = router;

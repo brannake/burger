@@ -1,15 +1,23 @@
-<h1>Burgers!</h1>
+<h1>To Do!</h1>
 <ul class="burger_list">
   {{#each burger}}
     <li>{{this.burger_name}}</li>
-    <div>Devoured {{this.devoured}}</div>
+    <div>Done {{this.devoured}}</div>
     <form action="/update/{{this.id}}" method="POST">
     <input type="hidden" name="{{this.burger_name}}" id="{{this.id}}">
-    <button type="submit">Devour this burger!</button>
-</form>
+    <button type="submit">Mark completed</button>
+    </form>
+        <form action="/delete/{{this.id}}" method="POST">
+    <input type="hidden" name="{{this.burger_name}}" id="{{this.id}}">
+    <button type="submit">Delete</button>
+    </form>
+            <form action="/update2/{{this.id}}" method="POST">
+    <input type="text" name="thing" id="{{this.id}}">
+    <button type="submit">Update</button>
+    </form>
   {{/each}}
 </ul>
 <form action="/insert" method="POST">
     <input type="text" name="burger_name">
-    <button type="submit">Add another burger!</button>
+    <button type="submit">Add task</button>
 </form>

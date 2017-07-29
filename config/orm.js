@@ -52,10 +52,10 @@ insert: function (table, cols, vals, cb) {
     });
   },
 
-  update: function(table, vals, condition, cb) {
+  update2: function(table, vals, condition, cb) {
     var queryString = "UPDATE " + table;
     queryString += " SET ";
-    queryString += "devoured = "+vals;
+    queryString += "burger_name = "+vals;
     queryString += " WHERE ";
     queryString += condition;
     queryString += ";";
@@ -66,7 +66,18 @@ insert: function (table, cols, vals, cb) {
       }
       cb(results);
     })
+  },
+
+  delete: function(table, id, cb) {
+    console.log(table);
+    console.log(id);
+    var queryString = "DELETE FROM "+table+" WHERE id = "+id;
+    console.log(queryString);
+    connection.query(queryString, function(err, result) {
+      console.log(result);
+      cb(result);
+    });
   }
-}
+};
 
 module.exports = orm;
